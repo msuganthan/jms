@@ -1,0 +1,23 @@
+package org.suganthan.rabbitmq.example;
+
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
+import com.rabbitmq.client.*;
+
+public class QueueWorker {
+
+	private static final String TASK_QUEUE_NAME = "task_queue";
+	
+	public static void main(String[] args) throws IOException, TimeoutException {
+		ConnectionFactory factory = new ConnectionFactory();
+	    factory.setHost("localhost");
+	    final Connection connection = factory.newConnection();
+	    final Channel channel = connection.createChannel();
+
+	    channel.queueDeclare(TASK_QUEUE_NAME, true, false, false, null);
+	    System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
+
+	}
+
+}

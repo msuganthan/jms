@@ -1,0 +1,14 @@
+package org.suganthan.rabbitmq.example.publishSubscriber;
+
+public class EmitLog {
+
+	public static void main(String[] args) {
+		ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+
+
+	}
+
+}

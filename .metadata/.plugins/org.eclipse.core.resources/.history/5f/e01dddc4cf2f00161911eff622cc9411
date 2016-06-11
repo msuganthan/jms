@@ -1,0 +1,5 @@
+package org.suganthan.rabbitmq.example.Topic;
+
+public class EmitLogTopic {
+
+}
