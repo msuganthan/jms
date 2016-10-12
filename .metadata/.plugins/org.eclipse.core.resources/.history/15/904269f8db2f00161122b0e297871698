@@ -1,5 +1,0 @@
-package org.suganthan.rabbitmq.example.rpc;
-
-public class RPCServer {
-
-}
