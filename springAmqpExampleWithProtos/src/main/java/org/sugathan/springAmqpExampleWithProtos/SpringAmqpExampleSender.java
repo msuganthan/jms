@@ -1,21 +1,25 @@
 package org.sugathan.springAmqpExampleWithProtos;
 
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.suganthan.springAmpqExampleWithProtos.RabbitProtos.RabbitProto;
+import org.sugathan.springAmqpExampleWithProtos.PersonProtos.PersonProto;
 
+@SpringBootApplication
 public class SpringAmqpExampleSender {
 
 	final static String queueName = "spring-rabbit-sample";
 	
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(RabbitConfig.class);
 		AmqpTemplate template = context.getBean(AmqpTemplate.class);
-		Rabbit rabbit = new Rabbit();
-		rabbit.setRabbitName("New Australian Rabbit");
-		RabbitProto protos = MQUtils.toProto(rabbit);
-		template.convertAndSend(queueName, protos);
-		System.out.println("successfully send"+rabbit);
+		Person person = new Person();
+		person.setFirstName("Suganthan");
+		person.setLastName("Madhavan");
+		PersonProto personProto = MQUtils.toProtos(person); 
+		template.convertAndSend(queueName, personProto);
+		System.out.println("successfully send "+personProto);
 	}
 }

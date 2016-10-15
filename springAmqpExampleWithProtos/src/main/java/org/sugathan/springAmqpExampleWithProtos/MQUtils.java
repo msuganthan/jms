@@ -1,22 +1,23 @@
 package org.sugathan.springAmqpExampleWithProtos;
 
-import org.suganthan.springAmpqExampleWithProtos.RabbitProtos.RabbitProto;
+import org.sugathan.springAmqpExampleWithProtos.PersonProtos.PersonProto;
 
 
 public class MQUtils {
 
-	public static Rabbit fromProtos(RabbitProto rabbitProto) {
-		Rabbit rabbit = new Rabbit();
-		rabbit.setRabbitName(rabbitProto.getRabbitName());
-		return rabbit;
+	public static Person fromProtos(PersonProto personProto) {
+		Person person = new Person();
+		person.setFirstName(personProto.getFirstName());
+		person.setLastName(personProto.getLastName());
+		return person;
 	}
-	
-	public static RabbitProto toProto(Rabbit rabbit) {
-		RabbitProto rabbitProto =  RabbitProto
-				.newBuilder()
-				.setRabbitName(rabbit.getRabbitName())
+
+	public static PersonProto toProtos(Person person) {
+		PersonProto personProto = PersonProto.newBuilder()
+				.setFirstName(person.getFirstName())
+				.setLastName(person.getLastName())
 				.build();
-		return rabbitProto;
+		return personProto;
 	}
 	
 	

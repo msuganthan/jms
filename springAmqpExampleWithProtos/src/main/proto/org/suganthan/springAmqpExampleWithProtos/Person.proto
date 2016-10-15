@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "org.sugathan.springAmqpExampleWithProtos";
+option java_outer_classname = "PersonProtos";
+
+message PersonProto {
+    string firstName = 1;
+    string lastName = 2;
+}
